@@ -1,6 +1,6 @@
-#Stock Tracker 📈
+# Stock Tracker 📈
 
-#Tech Stack
+# Tech Stack
 
 ## Frontend:
 
@@ -9,28 +9,30 @@ Apollo Client
 TypeScript
 Material UI
 
-##Backend:
+## Backend:
 
 Node.js
 Apollo Server
 GraphQL
 PostgreSQL
 
-#Getting Started
+# Getting Started
 
 ## Prerequisites
 
 ````
 Node.js >= 14.x
 npm >= 7.x```
-MongoDB running locally or a MongoDB Atlas account
+<!-- PostgreSQL running locally using Homebrew: -->
+brew install postgresql
+brew services start postgresql
+````
 
-## Installation
 Clone the Repository
 
 ```git clone https://github.com/your-username/stock-tracker.git
 cd stock-tracker
-````
+```
 
 ## Frontend Setup
 
@@ -65,7 +67,3 @@ We welcome contributions! Please see our CONTRIBUTING.md for details on how to g
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.
-
-```
-
-```
