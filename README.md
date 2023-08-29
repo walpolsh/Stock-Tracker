@@ -30,7 +30,8 @@ brew services start postgresql
 
 Clone the Repository
 
-```git clone https://github.com/your-username/stock-tracker.git
+```
+git clone https://github.com/your-username/stock-tracker.git
 cd stock-tracker
 ```
 
