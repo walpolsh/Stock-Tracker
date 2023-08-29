@@ -1,6 +1,8 @@
 export interface StockCardProps {
-  id: number;
-  symbol: string;
-  price: number;
-  volume: number;
+  stock: {
+    id: number;
+    symbol: string;
+    price: number;
+    volume: number;
+  };
 }
