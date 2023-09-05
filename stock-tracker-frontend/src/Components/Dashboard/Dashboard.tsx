@@ -1,8 +1,8 @@
 import {useQuery} from '@apollo/client';
-import React from 'react';
-import {StockCard} from '../StockCard/StockCard';
+import React, {Suspense} from 'react';
 import {GET_STOCKS} from './getStocksQuery';
-import {Container, Grid, Typography} from '@mui/material';
+import {Container, Typography} from '@mui/material';
+import {StockList} from './StockList';
 
 export const Dashboard: React.FC = () => {
   const {loading, error, data} = useQuery(GET_STOCKS);
@@ -13,13 +13,10 @@ export const Dashboard: React.FC = () => {
       <Typography variant="h2" gutterBottom>
         Stock Dashboard
       </Typography>
-      <Grid container spacing={3}>
-        {data.stocks.map((stock: any) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={stock.id}>
-            <StockCard stock={stock} />
-          </Grid>
-        ))}
-      </Grid>
+      <Suspense fallback={<p>Loading...</p>}>
+        {error && <p>Error: {error.message}</p>}
+        {!loading && !error && <StockList data={data} />}
+      </Suspense>
     </Container>
   );
 };

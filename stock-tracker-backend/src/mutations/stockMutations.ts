@@ -1,18 +1,21 @@
-import {insertStock, updatePrice, deleteStock} from '../queries/stockQueries';
-import {client} from '../../db';
-export const stockMutation = {
+const knexInstance = require('../db');
+const stockMutations = {
   Mutation: {
-    addStock: async (_, {symbol, companyName, price}) => {
-      const res = await client.query(insertStock, [symbol, companyName, price]);
-      return res.rows[0];
+    addStock: async (_, {symbol, company_name, price}) => {
+      return await knexInstance('fake_stocks')
+        .insert({symbol, company_name, price})
+        .returning('*');
     },
     updateStockPrice: async (_, {id, price}) => {
-      const res = await client.query(updatePrice, [price, id]);
-      return res.rows[0];
+      return await knexInstance('fake_stocks')
+        .where({id})
+        .update({price})
+        .returning('*');
     },
     deleteStock: async (_, {id}) => {
-      const res = await client.query(deleteStock, [id]);
-      return res.rows[0];
+      return await knexInstance('fake_stocks').where({id}).del().returning('*');
     },
   },
 };
+
+export default stockMutations;
