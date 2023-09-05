@@ -1,24 +1,24 @@
 # Stock Tracker 📈
 
-# Tech Stack
+## Tech Stack
 
-## Frontend:
+### Frontend:
 
 React
 Apollo Client
 TypeScript
 Material UI
 
-## Backend:
+### Backend:
 
 Node.js
 Apollo Server
 GraphQL
 PostgreSQL
 
-# Getting Started
+## Getting Started
 
-## Prerequisites
+### Prerequisites
 
 ````
 Node.js >= 14.x
@@ -35,7 +35,7 @@ git clone https://github.com/your-username/stock-tracker.git
 cd stock-tracker
 ```
 
-## Frontend Setup
+### Frontend Setup
 
 Navigate to the frontend directory and install the dependencies:
 
@@ -48,7 +48,7 @@ To start the development server:
 
 `npm start`
 
-## Backend Setup
+### Backend Setup
 
 Navigate to the backend directory and install the dependencies:
 
