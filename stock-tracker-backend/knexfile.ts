@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 
 dotenv.config();
-const config = {
+const dbConfig = {
   client: 'pg',
   connection: {
     host: process.env.DB_HOST,
@@ -17,4 +17,4 @@ const config = {
     directory: './seeds',
   },
 };
-module.exports = config;
+module.exports = dbConfig;

@@ -1,15 +1,15 @@
-const ApolloServer = require('apollo-server');
-const {Stock} = require('../typeDefs/Stock');
-const {stockResolver} = require('../resolvers/stockResolvers');
+const {ApolloServer} = require('apollo-server');
+const typeDefs = require('../typeDefs/Stock');
+const resolvers = require('../resolvers/stockResolvers');
 const bootServer = () => {
   console.log('Connected to PostgreSQL');
   const server = new ApolloServer({
-    typeDefs: Stock,
-    resolvers: stockResolver,
+    typeDefs,
+    resolvers,
   });
   server.listen(4001).then(({url}) => {
     console.log(`Apollo Client running on ${url}`);
   });
 };
 
-export default bootServer;
+module.exports = bootServer;

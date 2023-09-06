@@ -22,7 +22,12 @@ const Stock = gql`
   }
 
   type Query {
-    stocks: [Stock]
+    getAllStocks: [Stock]
+    getStockByID(id: Int!): Stock
+    getStocksBySector(sector: String!): [Stock]
+    getMostVolatileStocks: [Stock]
+    getLeastVolatileStocks: [Stock]
+    getRecentlyUpdatedStocks: [Stock]
   }
 
   type Mutation {
@@ -31,4 +36,4 @@ const Stock = gql`
     deleteStock(id: Int!): Stock!
   }
 `;
-export default Stock;
+module.exports = Stock;

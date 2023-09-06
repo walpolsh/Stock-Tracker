@@ -1,11 +1,11 @@
 import {useQuery} from '@apollo/client';
 import React, {Suspense} from 'react';
-import {GET_STOCKS} from './getStocksQuery';
+import {GET_ALL_STOCKS} from '../../Queries/stockQueries';
 import {Container, Typography} from '@mui/material';
 import {StockList} from './StockList';
 
 export const Dashboard: React.FC = () => {
-  const {loading, error, data} = useQuery(GET_STOCKS);
+  const {loading, error, data} = useQuery(GET_ALL_STOCKS);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (

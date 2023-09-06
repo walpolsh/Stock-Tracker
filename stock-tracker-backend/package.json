@@ -2,10 +2,10 @@
   "name": "stock-tracker-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "./index.js",
   "scripts": {
-    "start": "node --loader ts-node/esm ./src/index.ts",
-    "dev": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' ./src/index.ts",
+    "start": "node --loader ts-node/esm ./index.ts",
+    "dev": "nodemon --watch '**/*' -e ts,tsx --exec 'ts-node' ./index.ts",
     "migrate": "ts-node ./node_modules/.bin/knex migrate:latest",
     "rollback": "ts-node ./node_modules/.bin/knex migrate:rollback",
     "seed": "ts-node ./node_modules/.bin/knex seed:run"

@@ -1,0 +1,9 @@
+{
+  "extends": ["react-app", "plugin:@typescript-eslint/recommended", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "prettier/prettier": ["error"],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "warn"
+  }
+}
