@@ -1,6 +1,6 @@
 import {useQuery} from '@apollo/client';
 import React, {Suspense} from 'react';
-import {GET_ALL_STOCKS} from '../../Queries/stockQueries';
+import {GET_ALL_STOCKS} from '../../Queries/GET_ALL_STOCKS';
 import {Container, Typography} from '@mui/material';
 import {StockList} from './StockList';
 
