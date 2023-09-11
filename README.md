@@ -1,70 +1,21 @@
-# Stock Tracker 📈
+# Stock Tracker
 
-## Tech Stack
+## Description
 
-### Frontend:
+    Stock Tracker is an application designed to provide real-time updates on stock markets. Built with modern technologies, the app aims to deliver an interactive experience for users who are keen to stay ahead of the curve in the investment arena.
 
-React
-Apollo Client
-TypeScript
-Material UI
+# Future Features
 
-### Backend:
+    - Real-time stock updates
+    - Interactive graphical representations
+    - User authentication
+    - Watchlist features
+    - Push notifications for stock updates
+    - Integration with other financial data APIs
+    - Advanced stock analysis tools
+    - Social features to follow trusted investors
 
-Node.js
-Apollo Server
-GraphQL
-PostgreSQL
+# Technologies Used
 
-## Getting Started
-
-### Prerequisites
-
-````
-Node.js >= 14.x
-npm >= 7.x```
-<!-- PostgreSQL running locally using Homebrew: -->
-brew install postgresql
-brew services start postgresql
-````
-
-Clone the Repository
-
-```
-git clone https://github.com/your-username/stock-tracker.git
-cd stock-tracker
-```
-
-### Frontend Setup
-
-Navigate to the frontend directory and install the dependencies:
-
-```
-cd stock-tracker-frontend
-npm install
-```
-
-To start the development server:
-
-`npm start`
-
-### Backend Setup
-
-Navigate to the backend directory and install the dependencies:
-
-```
-cd stock-tracker-backend
-npm install
-```
-
-To start the Apollo Server:
-
-`npm run start`
-
-## Contributing
-
-We welcome contributions! Please see our CONTRIBUTING.md for details on how to get involved.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+    - Frontend: React, TypeScript, GraphQL, Apollo Client
+    - Backend: Node.js, PostgresQL, Knex, GraphQL, Apollo Server
