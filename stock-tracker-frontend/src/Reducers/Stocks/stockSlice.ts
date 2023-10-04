@@ -1,13 +1,5 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {client} from '../../client'; // Import your Apollo client instance
-import {GET_ALL_STOCKS} from '../../Queries/GET_ALL_STOCKS';
-
-export const fetchStocks = createAsyncThunk('stocks/fetchStocks', async () => {
-  const {data} = await client.query({
-    query: GET_ALL_STOCKS,
-  });
-  return data;
-});
+import {createSlice} from '@reduxjs/toolkit';
+import {reducers} from './reducers';
 
 const stocksSlice = createSlice({
   name: 'stocks',
@@ -16,21 +8,8 @@ const stocksSlice = createSlice({
     loading: false,
     error: null,
   },
-  extraReducers: builder => {
-    builder
-      .addCase(fetchStocks.pending, state => {
-        state.loading = true;
-      })
-      .addCase(fetchStocks.fulfilled, (state, action) => {
-        state.stocks = action.payload;
-        state.loading = false;
-      })
-      .addCase(fetchStocks.rejected, (state, action) => {
-        state.error = action.error;
-        state.loading = false;
-      });
-  },
-  reducers: undefined,
+  reducers,
 });
 
-export default stocksSlice.reducer;
+export const {setStocks} = stocksSlice.actions;
+export const stocksReducer = stocksSlice.reducer;
