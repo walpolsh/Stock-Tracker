@@ -31,7 +31,20 @@ const Stock = gql`
   }
 
   type Mutation {
-    addStock(symbol: String!, companyName: String, price: Float!): Stock!
+    addStock(
+      symbol: String!
+      companyName: String
+      sector: String
+      price: Float!
+      volume: Int
+      dayChange: Float
+      fiftyTwoWeekHigh: Float
+      fiftyTwoWeekLow: Float
+      EPS: Float
+      PERatio: Float
+      DividendYield: Float
+      MarketCap: Float
+    ): Stock!
     updateStockPrice(id: Int!, price: Float!): Stock!
     deleteStock(id: Int!): Stock!
   }

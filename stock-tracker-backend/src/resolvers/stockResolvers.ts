@@ -28,9 +28,38 @@ const stockResolvers = {
     },
   },
   Mutation: {
-    addStock: async (_, {symbol, company_name, price}) => {
+    addStock: async (
+      _,
+      {
+        symbol,
+        companyName,
+        sector,
+        price,
+        volume,
+        dayChange,
+        fiftyTwoWeekHigh,
+        fiftyTwoWeekLow,
+        EPS,
+        PERatio,
+        DividendYield,
+        MarketCap,
+      },
+    ) => {
       return await knexResolver('fake_stocks')
-        .insert({symbol, company_name, price})
+        .insert({
+          symbol,
+          companyName,
+          sector,
+          price,
+          volume,
+          dayChange,
+          fiftyTwoWeekHigh,
+          fiftyTwoWeekLow,
+          EPS,
+          PERatio,
+          DividendYield,
+          MarketCap,
+        })
         .returning('*');
     },
     updateStockPrice: async (_, {id, price}) => {
