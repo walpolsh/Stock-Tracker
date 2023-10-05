@@ -5,19 +5,19 @@ export const GET_ALL_STOCKS = gql`
     getAllStocks {
       id
       symbol
-      companyName
+      company_name
       sector
       price
       volume
-      lastUpdated
-      dayChange
-      fiftyTwoWeekHigh
-      fiftyTwoWeekLow
-      EPS
-      PERatio
-      DividendYield
-      MarketCap
-      Beta
+      last_updated
+      day_change
+      fifty_two_week_high
+      fifty_two_week_low
+      eps
+      p_e_ratio
+      dividend_yield
+      market_cap
+      beta
     }
   }
 `;

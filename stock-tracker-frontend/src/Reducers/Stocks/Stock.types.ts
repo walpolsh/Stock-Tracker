@@ -2,19 +2,19 @@ export type Stock = {
   __typename: string;
   id: number;
   symbol: string;
-  companyName: string;
+  company_name: string;
   sector: string;
   price: number;
   volume: number;
-  lastUpdated: string;
-  dayChange: number;
-  fiftyTwoWeekHigh: null | number;
-  fiftyTwoWeekLow: null | number;
-  EPS: number;
-  PERatio: null | number;
-  DividendYield: number;
-  MarketCap: number;
-  Beta: number;
+  last_updated: string;
+  day_change: number;
+  fifty_two_week_high: null | number;
+  fifty_two_week_low: null | number;
+  eps: number;
+  p_e_ratio: null | number;
+  dividend_yield: number;
+  market_cap: number;
+  beta: number;
 };
 
 export type StocksState = {

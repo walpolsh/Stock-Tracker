@@ -1,5 +1,7 @@
-exports.up = async function (knex) {
-  return knex.schema.createTable('fake_stocks', function (table) {
+import {Knex} from 'knex';
+
+exports.up = async function (knex: Knex) {
+  return knex.schema.createTable(process.env.DB_NAME, function (table) {
     table.increments('id').primary();
     table.string('symbol', 10).notNullable().unique();
     table.string('company_name', 100);
@@ -18,6 +20,6 @@ exports.up = async function (knex) {
   });
 };
 
-exports.down = async function (knex) {
-  return knex.schema.dropTable('fake_stocks');
+exports.down = async function (knex: Knex) {
+  return knex.schema.dropTable(process.env.DB_NAME);
 };

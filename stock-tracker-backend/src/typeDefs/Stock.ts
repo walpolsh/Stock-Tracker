@@ -6,19 +6,19 @@ const Stock = gql`
   type Stock {
     id: Int!
     symbol: String!
-    companyName: String
+    company_name: String
     sector: String
     price: Float!
     volume: Int!
-    lastUpdated: DateTime
-    dayChange: Float
-    fiftyTwoWeekHigh: Float
-    fiftyTwoWeekLow: Float
-    EPS: Float
-    PERatio: Float
-    DividendYield: Float
-    MarketCap: Float
-    Beta: Float
+    last_updated: DateTime
+    day_change: Float
+    fifty_two_week_high: Float
+    fifty_two_week_low: Float
+    eps: Float
+    p_e_ratio: Float
+    dividend_yield: Float
+    market_cap: Float
+    beta: Float
   }
 
   type Query {
@@ -33,17 +33,18 @@ const Stock = gql`
   type Mutation {
     addStock(
       symbol: String!
-      companyName: String
+      company_name: String
       sector: String
       price: Float!
       volume: Int
-      dayChange: Float
-      fiftyTwoWeekHigh: Float
-      fiftyTwoWeekLow: Float
-      EPS: Float
-      PERatio: Float
-      DividendYield: Float
-      MarketCap: Float
+      day_change: Float
+      fifty_two_week_high: Float
+      fifty_two_week_low: Float
+      eps: Float
+      p_e_ratio: Float
+      dividend_yield: Float
+      market_cap: Float
+      beta: Float
     ): Stock!
     updateStockPrice(id: Int!, price: Float!): Stock!
     deleteStock(id: Int!): Stock!
