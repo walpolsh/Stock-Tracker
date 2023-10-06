@@ -15,7 +15,7 @@ export const Dashboard: React.FC = () => {
   return (
     <Container>
       <Typography variant="h2" gutterBottom>
-        Stock Dashboard
+        Dashboard
       </Typography>
       <Suspense fallback={<p>Loading...</p>}>
         {error && <p>Error: {error.message}</p>}

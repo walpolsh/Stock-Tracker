@@ -1,12 +1,57 @@
-import {Box, Modal, Typography} from '@mui/material';
+import {
+  Box,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Modal,
+  Typography,
+} from '@mui/material';
+import {
+  Business,
+  TrendingUp,
+  ShowChart,
+  Functions,
+  Equalizer,
+  MonetizationOn,
+  BarChart,
+  MultilineChart,
+  Update,
+  PriceChange,
+  VolumeUpSharp,
+} from '@mui/icons-material';
 
-export function StockCardModal(
-  open: boolean,
-  handleClose: () => void,
-  symbol: string,
-  price: number,
-  volume: number,
-) {
+import {format, parseISO} from 'date-fns';
+
+import {Stock} from '../../Reducers/Stocks/Stock.types';
+
+export function StockCardModal({
+  open,
+  handleClose,
+  stock,
+}: {
+  open: boolean;
+  handleClose: () => void;
+  stock: Stock;
+}) {
+  const {
+    symbol,
+    company_name,
+    sector,
+    price,
+    volume,
+    last_updated,
+    day_change,
+    fifty_two_week_high,
+    fifty_two_week_low,
+    eps,
+    p_e_ratio,
+    dividend_yield,
+    market_cap,
+    beta,
+  } = stock;
+  const formattedDate = format(parseISO(last_updated), 'EEEE, MMMM do, yyyy');
+
   return (
     <Modal
       open={open}
@@ -29,9 +74,91 @@ export function StockCardModal(
           {symbol}
         </Typography>
         <Typography id="modal-modal-description" sx={{mt: 2}}>
-          Price: {price} <br />
-          Volume: {volume}
+          {company_name}
         </Typography>
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <PriceChange />
+            </ListItemIcon>
+            <ListItemText primary="Price" secondary={`$${price}`} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <VolumeUpSharp />
+            </ListItemIcon>
+            <ListItemText primary="Volume" secondary={`${volume}`} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <Business />
+            </ListItemIcon>
+            <ListItemText primary="Sector" secondary={sector} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <Update />
+            </ListItemIcon>
+            <ListItemText primary="Last Updated" secondary={formattedDate} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <TrendingUp />
+            </ListItemIcon>
+            <ListItemText primary="Day Change" secondary={`${day_change}`} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <ShowChart />
+            </ListItemIcon>
+            <ListItemText
+              primary="52 Week High"
+              secondary={`${fifty_two_week_high}`}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <ShowChart />
+            </ListItemIcon>
+            <ListItemText
+              primary="52 Week Low"
+              secondary={`${fifty_two_week_low}`}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <Functions />
+            </ListItemIcon>
+            <ListItemText primary="EPS" secondary={`${eps}`} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <Equalizer />
+            </ListItemIcon>
+            <ListItemText primary="P/E Ratio" secondary={`${p_e_ratio}`} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <MonetizationOn />
+            </ListItemIcon>
+            <ListItemText
+              primary="Dividend Yield"
+              secondary={`${dividend_yield}`}
+            />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <BarChart />
+            </ListItemIcon>
+            <ListItemText primary="Market Cap" secondary={`${market_cap}`} />
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <MultilineChart />
+            </ListItemIcon>
+            <ListItemText primary="Beta" secondary={`${beta}`} />
+          </ListItem>
+        </List>
       </Box>
     </Modal>
   );

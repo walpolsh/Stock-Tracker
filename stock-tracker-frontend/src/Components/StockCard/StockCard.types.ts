@@ -1,8 +1,5 @@
+import {Stock} from '../../Reducers/Stocks/Stock.types';
+
 export interface StockCardProps {
-  stock: {
-    id: number;
-    symbol: string;
-    price: number;
-    volume: number;
-  };
+  stock: Stock;
 }

@@ -28,7 +28,7 @@ export const StockCard: React.FC<StockCardProps> = ({stock}) => {
           </Typography>
         </CardContent>
       </Card>
-      {StockCardModal(open, handleClose, symbol, price, volume)}
+      <StockCardModal open={open} handleClose={handleClose} stock={stock} />
     </>
   );
 };

@@ -1,5 +1,4 @@
 export type Stock = {
-  __typename: string;
   id: number;
   symbol: string;
   company_name: string;
