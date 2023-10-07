@@ -43,6 +43,7 @@ const stockResolvers = {
         p_e_ratio,
         dividend_yield,
         market_cap,
+        beta,
       },
     ) => {
       const result = await knexResolver(process.env.DB_NAME)
@@ -59,10 +60,11 @@ const stockResolvers = {
           p_e_ratio,
           dividend_yield,
           market_cap,
+          beta,
         })
         .returning('*');
       console.log(result);
-      return result;
+      return result[0];
     },
     updateStockPrice: async (_, {id, price}) => {
       return await knexResolver(process.env.DB_NAME)

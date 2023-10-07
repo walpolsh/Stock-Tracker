@@ -14,6 +14,7 @@ export const ADD_STOCK = gql`
     $p_e_ratio: Float
     $dividend_yield: Float
     $market_cap: Float
+    $beta: Float
   ) {
     addStock(
       symbol: $symbol
@@ -28,6 +29,7 @@ export const ADD_STOCK = gql`
       p_e_ratio: $p_e_ratio
       dividend_yield: $dividend_yield
       market_cap: $market_cap
+      beta: $beta
     ) {
       id
       symbol

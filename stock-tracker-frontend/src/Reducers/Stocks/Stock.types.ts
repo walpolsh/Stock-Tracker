@@ -28,3 +28,10 @@ export type SetStocksAction = {
     data: Stock[];
   };
 };
+
+export type AddStockAction = {
+  type: string;
+  payload: {
+    data: Stock;
+  };
+};
