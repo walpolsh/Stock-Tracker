@@ -35,6 +35,7 @@ import {useMutation} from '@apollo/client';
 import {useState} from 'react';
 import {setStocks} from '../../Reducers/Stocks/stockSlice';
 import {useAppDispatch, useAppSelector} from '../../reduxHooks';
+import {StockCardModalStyles} from './StockCardModalStyles';
 
 export function StockCardModal({
   open,
@@ -88,10 +89,6 @@ export function StockCardModal({
       handleClose();
     } catch (error) {
       console.error('Error adding stock:', error.message);
-      // setError('submit', {
-      //   type: error.message,
-      //   message: 'An error occurred while adding the stock.',
-      // });
     }
   };
   return (
@@ -226,17 +223,3 @@ export function StockCardModal({
     </Modal>
   );
 }
-
-const StockCardModalStyles = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: {xs: '90%', sm: '75%', md: '80%'},
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  overflow: 'auto',
-  maxHeight: '90%',
-  p: 4,
-};
