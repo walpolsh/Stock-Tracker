@@ -1,4 +1,3 @@
-import './App.css';
 import {Dashboard} from './Components/Dashboard/Dashboard';
 
 export function App() {

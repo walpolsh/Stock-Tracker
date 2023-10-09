@@ -63,7 +63,6 @@ const stockResolvers = {
           beta,
         })
         .returning('*');
-      console.log(result);
       return result[0];
     },
     updateStockPrice: async (_, {id, price}) => {
