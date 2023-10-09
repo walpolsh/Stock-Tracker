@@ -1,5 +1,11 @@
 import {
   Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
   List,
   ListItem,
   ListItemIcon,
@@ -24,6 +30,11 @@ import {
 import {format, parseISO} from 'date-fns';
 
 import {Stock} from '../../Reducers/Stocks/Stock.types';
+import {DELETE_STOCK} from '../../Mutations/DELETE_STOCK';
+import {useMutation} from '@apollo/client';
+import {useState} from 'react';
+import {setStocks} from '../../Reducers/Stocks/stockSlice';
+import {useAppDispatch, useAppSelector} from '../../reduxHooks';
 
 export function StockCardModal({
   open,
@@ -35,6 +46,7 @@ export function StockCardModal({
   stock: Stock;
 }) {
   const {
+    id,
     symbol,
     company_name,
     sector,
@@ -50,26 +62,45 @@ export function StockCardModal({
     market_cap,
     beta,
   } = stock;
-  const formattedDate = format(parseISO(last_updated), 'EEEE, MMMM do, yyyy');
+  const [deleteStock] = useMutation(DELETE_STOCK);
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
+  const {stocks} = useAppSelector(state => state.stocksReducer);
 
+  const dispatch = useAppDispatch();
+
+  const handleOpenConfirmDialog = () => {
+    setConfirmDialogOpen(true);
+  };
+
+  const handleCloseConfirmDialog = () => {
+    setConfirmDialogOpen(false);
+  };
+  const formattedDate = format(parseISO(last_updated), 'EEEE, MMMM do, yyyy');
+  const handleRemoveStock = async () => {
+    try {
+      const response = await deleteStock({variables: {deleteStockId: id}});
+      console.log(response);
+      dispatch(
+        setStocks({
+          data: [...stocks.filter(stock => stock.id !== id)],
+        }),
+      );
+      handleClose();
+    } catch (error) {
+      console.error('Error adding stock:', error.message);
+      // setError('submit', {
+      //   type: error.message,
+      //   message: 'An error occurred while adding the stock.',
+      // });
+    }
+  };
   return (
     <Modal
       open={open}
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description">
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 400,
-          bgcolor: 'background.paper',
-          border: '2px solid #000',
-          boxShadow: 24,
-          p: 4,
-        }}>
+      <Box sx={StockCardModalStyles}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
           {symbol}
         </Typography>
@@ -159,7 +190,53 @@ export function StockCardModal({
             <ListItemText primary="Beta" secondary={`${beta}`} />
           </ListItem>
         </List>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleOpenConfirmDialog}>
+          Remove Stock
+        </Button>
+        <Dialog
+          open={confirmDialogOpen}
+          onClose={handleCloseConfirmDialog}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">{'Confirm Removal'}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to remove this stock?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseConfirmDialog} color="primary">
+              Cancel
+            </Button>
+            <Button
+              onClick={async () => {
+                await handleRemoveStock();
+                handleCloseConfirmDialog();
+              }}
+              color="primary"
+              autoFocus>
+              Confirm
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </Modal>
   );
 }
+
+const StockCardModalStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: {xs: '90%', sm: '75%', md: '80%'},
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  overflow: 'auto',
+  maxHeight: '90%',
+  p: 4,
+};

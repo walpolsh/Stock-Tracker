@@ -6,6 +6,8 @@ import {ApolloProvider} from '@apollo/client';
 import {client} from './client';
 import {Provider} from 'react-redux';
 import {store} from './store';
+import {ThemeProvider} from '@emotion/react';
+import {theme} from './theme';
 
 const rootElement = document.getElementById('root');
 if (rootElement === null) {
@@ -18,7 +20,9 @@ root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <Provider store={store}>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </Provider>
     </ApolloProvider>
   </React.StrictMode>,

@@ -11,5 +11,5 @@ export function useSetStocks(
     if (data) {
       dispatch(setStocks({data: data.getAllStocks}));
     }
-  });
+  }, [dispatch, data]);
 }

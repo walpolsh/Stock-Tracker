@@ -1,12 +1,12 @@
-import {Fab, Grid, SxProps} from '@mui/material';
-import {StockCard} from '../StockCard/StockCard';
-import {useAppSelector} from '../../reduxHooks';
-import {Stock} from '../../Reducers/Stocks/Stock.types';
-import {AddStockModal} from '../AddStockModal/AddStockModal';
-import {useState} from 'react';
 import {Add} from '@mui/icons-material';
+import {Fab, Grid, SxProps} from '@mui/material';
+import {useState} from 'react';
+import {Stock} from '../../Reducers/Stocks/Stock.types';
+import {useAppSelector} from '../../reduxHooks';
+import {AddStockModal} from '../AddStockModal/AddStockModal';
+import {StockCard} from '../StockCard/StockCard';
 const fabStyle = {
-  position: 'absolute',
+  position: 'fixed',
   bottom: 16,
   right: 16,
 };

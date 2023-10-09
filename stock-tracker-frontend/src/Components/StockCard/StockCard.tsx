@@ -15,7 +15,7 @@ export const StockCard: React.FC<StockCardProps> = ({stock}) => {
   };
   return (
     <>
-      <Card onClick={handleOpen}>
+      <Card onClick={handleOpen} sx={{cursor: 'pointer'}}>
         <CardContent>
           <Typography variant="h5" component="div">
             {symbol}

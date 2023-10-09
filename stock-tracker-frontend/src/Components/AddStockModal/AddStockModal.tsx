@@ -58,7 +58,6 @@ export function AddStockModal({
     };
     try {
       const response = await addStock({variables: numericData});
-      console.log('Stock added:', response.data);
       dispatch(setStocks({data: [...stocks, response.data.addStock]}));
       handleClose();
     } catch (error) {
@@ -79,18 +78,7 @@ export function AddStockModal({
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description">
-      <Box
-        sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 400,
-          bgcolor: 'background.paper',
-          border: '2px solid #000',
-          boxShadow: 24,
-          p: 4,
-        }}>
+      <Box sx={AddStockStyles}>
         <Typography id="modal-modal-title" variant="h6" component="h2">
           Add New Stock
         </Typography>
@@ -134,3 +122,17 @@ export function AddStockModal({
     </Modal>
   );
 }
+const AddStockStyles = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: {xs: '90%', sm: '75%', md: '80%'},
+  maxWidth: '80%',
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+  overflow: 'auto',
+  maxHeight: '80%',
+};
