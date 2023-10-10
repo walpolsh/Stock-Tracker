@@ -65,11 +65,45 @@ const stockResolvers = {
         .returning('*');
       return result[0];
     },
-    updateStockPrice: async (_, {id, price}) => {
-      return await knexResolver(process.env.DB_NAME)
+
+    updateStock: async (
+      _,
+      {
+        id,
+        symbol,
+        company_name,
+        sector,
+        price,
+        volume,
+        day_change,
+        fifty_two_week_high,
+        fifty_two_week_low,
+        eps,
+        p_e_ratio,
+        dividend_yield,
+        market_cap,
+        beta,
+      },
+    ) => {
+      const result = await knexResolver(process.env.DB_NAME)
         .where({id})
-        .update({price})
+        .update({
+          symbol,
+          company_name,
+          sector,
+          price,
+          volume,
+          day_change,
+          fifty_two_week_high,
+          fifty_two_week_low,
+          eps,
+          p_e_ratio,
+          dividend_yield,
+          market_cap,
+          beta,
+        })
         .returning('*');
+      return result[0];
     },
     deleteStock: async (_, {id}) => {
       return await knexResolver(process.env.DB_NAME)

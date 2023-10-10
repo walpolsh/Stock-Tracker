@@ -46,7 +46,22 @@ const Stock = gql`
       market_cap: Float
       beta: Float
     ): Stock!
-    updateStockPrice(id: Int!, price: Float!): Stock!
+    updateStock(
+      id: Int!
+      symbol: String!
+      company_name: String
+      sector: String
+      price: Float!
+      volume: Int
+      day_change: Float
+      fifty_two_week_high: Float
+      fifty_two_week_low: Float
+      eps: Float
+      p_e_ratio: Float
+      dividend_yield: Float
+      market_cap: Float
+      beta: Float
+    ): Stock!
     deleteStock(id: Int!): Stock!
   }
 `;

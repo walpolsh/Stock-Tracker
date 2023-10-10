@@ -26,9 +26,7 @@ import {
   PriceChange,
   VolumeUpSharp,
 } from '@mui/icons-material';
-
 import {format, parseISO} from 'date-fns';
-
 import {Stock} from '../../Reducers/Stocks/Stock.types';
 import {DELETE_STOCK} from '../../Mutations/DELETE_STOCK';
 import {useMutation} from '@apollo/client';
@@ -36,6 +34,7 @@ import {useState} from 'react';
 import {setStocks} from '../../Reducers/Stocks/stockSlice';
 import {useAppDispatch, useAppSelector} from '../../reduxHooks';
 import {StockCardModalStyles} from './StockCardModalStyles';
+import {EditStockCard} from './EditStockCard';
 
 export function StockCardModal({
   open,
@@ -66,6 +65,7 @@ export function StockCardModal({
   const [deleteStock] = useMutation(DELETE_STOCK);
   const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
   const {stocks} = useAppSelector(state => state.stocksReducer);
+  const [openEditStock, setOpenEditStock] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -91,7 +91,9 @@ export function StockCardModal({
       console.error('Error adding stock:', error.message);
     }
   };
-  return (
+  return openEditStock ? (
+    <EditStockCard open={open} handleClose={handleClose} stock={stock} />
+  ) : (
     <Modal
       open={open}
       onClose={handleClose}
@@ -187,12 +189,20 @@ export function StockCardModal({
             <ListItemText primary="Beta" secondary={`${beta}`} />
           </ListItem>
         </List>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleOpenConfirmDialog}>
-          Remove Stock
-        </Button>
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setOpenEditStock(true)}>
+            Edit Stock
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleOpenConfirmDialog}>
+            Remove Stock
+          </Button>
+        </div>
         <Dialog
           open={confirmDialogOpen}
           onClose={handleCloseConfirmDialog}

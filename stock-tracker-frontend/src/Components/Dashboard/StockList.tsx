@@ -5,12 +5,7 @@ import {Stock} from '../../Reducers/Stocks/Stock.types';
 import {useAppSelector} from '../../reduxHooks';
 import {AddStockModal} from '../AddStockModal/AddStockModal';
 import {StockCard} from '../StockCard/StockCard';
-const fabStyle = {
-  position: 'fixed',
-  bottom: 16,
-  right: 16,
-};
-
+import {fabStyle} from './fabStyle';
 export function StockList() {
   const {stocks} = useAppSelector(state => state.stocksReducer);
   const [open, setOpen] = useState(false);
