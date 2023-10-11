@@ -186,7 +186,7 @@ export function StockCardModal({
             <ListItemIcon>
               <MultilineChart />
             </ListItemIcon>
-            <ListItemText primary="Beta" secondary={`${beta}`} />
+            <ListItemText primary="Beta" secondary={`${beta || 'N/A'}`} />
           </ListItem>
         </List>
         <div style={{display: 'flex', justifyContent: 'space-between'}}>
