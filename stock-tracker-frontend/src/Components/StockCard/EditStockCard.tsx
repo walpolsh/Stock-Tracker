@@ -12,15 +12,14 @@ import {Stock} from '../../Reducers/Stocks/Stock.types';
 import {setStocks} from '../../Reducers/Stocks/stockSlice';
 import {useAppDispatch, useAppSelector} from '../../reduxHooks';
 import {AddStockStyles} from '../AddStockModal/AddStockStyles';
-import {formFields} from '../AddStockModal/formFields';
+import {formFields} from '../AddStockModal/Constants/formFields';
 
 import {useState} from 'react';
 import {UPDATE_STOCK} from '../../Mutations/UPDATE_STOCK';
-import {
-  capitalizeFirstLetter,
-  replaceUnderscores,
-} from '../AddStockModal/helpers';
-import {FormValues} from './FormValues.types';
+import {replaceUnderscores} from '../AddStockModal/Helpers/replaceUnderscores';
+import {capitalizeFirstLetter} from '../AddStockModal/Helpers/capitalizeFirstLetter';
+import {FormValues} from './Types/FormValues.types';
+import {submitData} from './Types/submitData.types';
 export function EditStockCard({
   open,
   handleClose,
@@ -52,18 +51,8 @@ export function EditStockCard({
   const [updateStock] = useMutation(UPDATE_STOCK);
   const dispatch = useAppDispatch();
   const {stocks} = useAppSelector(state => state.stocksReducer);
-  const onSubmit = async (data: {
-    price: string;
-    volume: string;
-    day_change: string;
-    fifty_two_week_high: string;
-    fifty_two_week_low: string;
-    eps: string;
-    p_e_ratio: string;
-    dividend_yield: string;
-    market_cap: string;
-    beta: string;
-  }) => {
+
+  const onSubmit = async (data: submitData) => {
     const numericData = {
       ...data,
       price: parseFloat(data.price),

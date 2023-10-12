@@ -1,11 +1,11 @@
 import {Card, CardContent, Typography} from '@mui/material';
 import React, {useState} from 'react';
-import {StockCardProps} from './StockCard.types';
+import {StockCardProps} from './Types/StockCard.types';
 import {StockCardModal} from './StockCardModal';
 
 export const StockCard: React.FC<StockCardProps> = ({stock}) => {
   const [open, setOpen] = useState(false);
-  const {symbol, price, volume} = stock;
+  const {symbol, price, volume, sector} = stock;
   const handleOpen = () => {
     setOpen(true);
   };
@@ -25,6 +25,9 @@ export const StockCard: React.FC<StockCardProps> = ({stock}) => {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             Volume: {volume}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Sector: {sector}
           </Typography>
         </CardContent>
       </Card>

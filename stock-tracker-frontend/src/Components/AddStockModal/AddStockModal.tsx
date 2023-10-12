@@ -11,8 +11,9 @@ import {Controller, useForm} from 'react-hook-form';
 import {ADD_STOCK} from '../../Mutations/ADD_STOCK';
 import {setStocks} from '../../Reducers/Stocks/stockSlice';
 import {useAppDispatch, useAppSelector} from '../../reduxHooks';
-import {formFields} from './formFields';
-import {capitalizeFirstLetter, replaceUnderscores} from './helpers';
+import {formFields} from './Constants/formFields';
+import {replaceUnderscores} from './Helpers/replaceUnderscores';
+import {capitalizeFirstLetter} from './Helpers/capitalizeFirstLetter';
 import {AddStockStyles} from './AddStockStyles';
 
 export function AddStockModal({

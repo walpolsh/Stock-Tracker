@@ -79,8 +79,7 @@ export function StockCardModal({
   const formattedDate = format(parseISO(last_updated), 'EEEE, MMMM do, yyyy');
   const handleRemoveStock = async () => {
     try {
-      const response = await deleteStock({variables: {deleteStockId: id}});
-      console.log(response);
+      await deleteStock({variables: {deleteStockId: id}});
       dispatch(
         setStocks({
           data: [...stocks.filter(stock => stock.id !== id)],
