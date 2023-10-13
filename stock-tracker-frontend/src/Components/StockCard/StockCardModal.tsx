@@ -33,7 +33,7 @@ import {useMutation} from '@apollo/client';
 import {useState} from 'react';
 import {setStocks} from '../../Reducers/Stocks/stockSlice';
 import {useAppDispatch, useAppSelector} from '../../reduxHooks';
-import {StockCardModalStyles} from './StockCardModalStyles';
+import {StockCardModalStyles} from './Styles/StockCardModalStyles';
 import {EditStockCard} from './EditStockCard';
 
 export function StockCardModal({

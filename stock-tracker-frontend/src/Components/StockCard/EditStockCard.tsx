@@ -11,7 +11,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {Stock} from '../../Reducers/Stocks/Stock.types';
 import {setStocks} from '../../Reducers/Stocks/stockSlice';
 import {useAppDispatch, useAppSelector} from '../../reduxHooks';
-import {AddStockStyles} from '../AddStockModal/AddStockStyles';
+import {AddStockStyles} from '../AddStockModal/Styles/AddStockStyles';
 import {formFields} from '../AddStockModal/Constants/formFields';
 
 import {useState} from 'react';

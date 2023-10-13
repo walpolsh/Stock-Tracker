@@ -14,8 +14,8 @@ import {useAppDispatch, useAppSelector} from '../../reduxHooks';
 import {formFields} from './Constants/formFields';
 import {replaceUnderscores} from './Helpers/replaceUnderscores';
 import {capitalizeFirstLetter} from './Helpers/capitalizeFirstLetter';
-import {AddStockStyles} from './AddStockStyles';
-
+import {AddStockStyles} from './Styles/AddStockStyles';
+import {SubmissionData} from './Types/SubmissionData.types';
 export function AddStockModal({
   open,
   handleClose,
@@ -33,18 +33,8 @@ export function AddStockModal({
   const [addStock] = useMutation(ADD_STOCK);
   const dispatch = useAppDispatch();
   const {stocks} = useAppSelector(state => state.stocksReducer);
-  const onSubmit = async (data: {
-    price: string;
-    volume: string;
-    day_change: string;
-    fifty_two_week_high: string;
-    fifty_two_week_low: string;
-    eps: string;
-    p_e_ratio: string;
-    dividend_yield: string;
-    market_cap: string;
-    beta: string;
-  }) => {
+
+  const onSubmit = async (data: SubmissionData) => {
     const numericData = {
       ...data,
       price: parseFloat(data.price),
